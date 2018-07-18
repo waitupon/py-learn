@@ -1,1 +1,2 @@
-*.pycgit ad
+*.pyc
+/.idea/
