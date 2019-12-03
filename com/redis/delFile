@@ -1,0 +1,12 @@
+import redis
+
+#pool = redis.ConnectionPool(host='101.201.66.121', port=6365, db=0, password='nikanba888')
+pool = redis.ConnectionPool(host='172.16.1.32', port=6776, db=0, password='passwode')
+r = redis.Redis(connection_pool=pool)
+
+key_list = []
+for key in r.scan_iter(match='taxsys:file:fileApply*', count=10000):
+    key_list.append(key)
+
+for key in key_list:
+  r.delete(key)
